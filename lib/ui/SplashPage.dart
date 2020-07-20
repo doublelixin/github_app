@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/HomePage.dart';
+import 'package:flutter_app/ui/LoginPage.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
         Navigator.of(context).pushAndRemoveUntil(
             new MaterialPageRoute(
                 //跳转到主页
-                builder: (BuildContext context) => new HomePage()),
+                builder: (BuildContext context) => new LoginPage()),
             (Route route) => route == null);
       } catch (e) {}
     });

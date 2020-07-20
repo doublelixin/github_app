@@ -76,13 +76,13 @@ class LoginPageState extends State<LoginPage> {
                 shape: BoxShape.circle,
 
                 ///图片
-                image: new DecorationImage(
-                    image: new AssetImage('images/logo.png')),
-//                image: DecorationImage(
-//                  fit: BoxFit.cover,
-//                  image: NetworkImage(
-//                      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569298229946&di=ea4ffb2b140ef40035772bbcee7bbdd5&imgtype=0&src=http%3A%2F%2Fcimg2.163.com%2Fcatchimg%2F20090909%2F8112139_3.jpg'),
-//                ),
+//                image: new DecorationImage(
+//                    image: new AssetImage('images/logo.png')),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595249284976&di=3a33d2631c71f026ab368829805e8c3f&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Felement_origin_min_pic%2F01%2F16%2F99%2F42570527ee4ed5b.jpg'),
+                ),
               ),
             ),
           )

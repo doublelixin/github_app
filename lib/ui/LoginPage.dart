@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_app/http/HttpManager.dart';
+import 'package:flutter_app/utils/ToastUtil.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -138,7 +142,7 @@ class LoginPageState extends State<LoginPage> {
               controller: _userNameEditController,
               focusNode: _userNameFocusNode,
               decoration: InputDecoration(
-                hintText: "请输入用户名",
+                hintText: '请输入用户名',
                 border: InputBorder.none,
               ),
               style: TextStyle(fontSize: 14),
@@ -183,12 +187,11 @@ class LoginPageState extends State<LoginPage> {
                 controller: _pwdEditController,
                 focusNode: _pwdFocusNode,
                 decoration: InputDecoration(
-                  hintText: "请输入密码",
+                  hintText: '请输入密码',
                   border: InputBorder.none,
                 ),
                 style: TextStyle(fontSize: 14),
                 obscureText: true,
-
                 /// 设置密码
               ),
             )
@@ -204,15 +207,12 @@ class LoginPageState extends State<LoginPage> {
       height: 40,
       child: RaisedButton(
         onPressed: () {
+          ///判断登录逻辑
           if (checkInput()) {
-            Fluttertoast.showToast(
-                msg: "登录成功",
-                gravity: ToastGravity.CENTER,
-                textColor: Colors.white,
-                fontSize: 14.0);
+            getData();
           }
         },
-        child: Text("登录"),
+        child: Text('登录'),
         color: Colors.blue[400],
         textColor: Colors.white,
         shape: RoundedRectangleBorder(
@@ -224,21 +224,24 @@ class LoginPageState extends State<LoginPage> {
 
   bool checkInput() {
     if (_userNameEditController.text.length == 0) {
-      Fluttertoast.showToast(
-          msg: "请输入用户名",
-          gravity: ToastGravity.CENTER,
-          textColor: Colors.white,
-          fontSize: 14.0);
-
+      ToastUtil.toast(context, '请输入用户名');
       return false;
     } else if (_pwdEditController.text.length == 0) {
-      Fluttertoast.showToast(
-          msg: "请输入密码",
-          gravity: ToastGravity.CENTER,
-          textColor: Colors.white,
-          fontSize: 14.0);
+      ToastUtil.toast(context, '请输入密码');
       return false;
     }
     return true;
+  }
+
+  Future<void> getData() async {
+    var url = 'https://www.baidu.com/';
+    Map<String, dynamic> params = new Map();
+    params['account'] = '18888888888';
+    params['password'] = '88888888';
+    Response response = await HttpManager().post(url, params: params);
+    print(response);
+    if (response.statusCode == HttpStatus.ok) {
+      ToastUtil.toast(context, '登录成功');
+    }
   }
 }

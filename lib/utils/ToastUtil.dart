@@ -20,7 +20,7 @@ class ToastUtil {
       _overlayEntry = OverlayEntry(
           builder: (BuildContext context) => Positioned(
                 //top值，可以改变这个值来改变toast在屏幕中的位置
-                top: MediaQuery.of(context).size.height * 2 / 3,
+                top: MediaQuery.of(context).size.height * 1 / 2,
                 child: Container(
                     alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width,

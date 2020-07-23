@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/http/HttpManager.dart';
+import 'package:flutter_app/ui/HomePage.dart';
 import 'package:flutter_app/utils/ToastUtil.dart';
 
 class LoginPage extends StatefulWidget {
@@ -192,6 +191,7 @@ class LoginPageState extends State<LoginPage> {
                 ),
                 style: TextStyle(fontSize: 14),
                 obscureText: true,
+
                 /// 设置密码
               ),
             )
@@ -234,14 +234,16 @@ class LoginPageState extends State<LoginPage> {
   }
 
   Future<void> getData() async {
-    var url = 'https://www.baidu.com/';
+    var url = 'https://api.uomg.com/api/login.baidu';
     Map<String, dynamic> params = new Map();
-    params['account'] = '18888888888';
-    params['password'] = '88888888';
+    params['method'] = 'login';
     Response response = await HttpManager().post(url, params: params);
     print(response);
-    if (response.statusCode == HttpStatus.ok) {
+    if (response != null) {
       ToastUtil.toast(context, '登录成功');
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return HomePage();
+      }));
     }
   }
 }

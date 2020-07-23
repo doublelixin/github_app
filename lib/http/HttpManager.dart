@@ -33,13 +33,13 @@ class HttpManager {
   HttpManager() {
     //BaseOptions、Options、RequestOptions 都可以配置参数，优先级别依次递增，且可以根据优先级别覆盖参数
     _options = new BaseOptions(
-        baseUrl: _BASEURL,
+//        baseUrl: _BASEURL,
         //连接时间为5秒
         connectTimeout: _CONNECTTIMEOUT,
         //响应时间为3秒
         receiveTimeout: _RECEIVETIMEOUT,
         //设置请求头
-        headers: _getHeaders(),
+        //headers: _getHeaders(),
         //默认值是"application/json; charset=utf-8",Headers.formUrlEncodedContentType会自动编码请求体.
         contentType: Headers.formUrlEncodedContentType,
         //表示期望以哪种格式(方式)接受响应数据。接受4种类型 `json`, `stream`, `plain`, `bytes`. 默认值是 `json`,
